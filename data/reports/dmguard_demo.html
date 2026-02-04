@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>DeltaMod-Guard 报告</title>
+<style>
+body{font-family:system-ui,Arial;margin:24px;line-height:1.6}
+.card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:12px 0}
+h1,h2{margin:0.4em 0} table{border-collapse:collapse;width:100%} th,td{border:1px solid #eee;padding:8px}
+.kpi{display:flex;gap:16px;flex-wrap:wrap} .kpi div{padding:8px 12px;background:#f6f8fa;border-radius:10px}
+img{max-width:100%}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;background:#eef}
+</style></head><body>
+<h1>DeltaMod-Guard 报告</h1>
+<p>场景：<b>dmguard-demo</b>｜数据：synthetic n=2000｜DM配置：<span class="badge">Δ₀=0.3</span> <span class="badge">γ=1.2</span> <span class="badge">θₖ=1.0</span> <span class="badge">OS=1×</span></p>
+
+<div class="kpi">
+  <div>F1: <b>0.2</b></div>
+  <div>Precision: <b>0.1429</b></div>
+  <div>Recall: <b>0.3333</b></div>
+  <div>Avg Delay (steps): <b>4.0</b></div>
+  <div>Bitrate (bit/sample): <b>1.0</b></div>
+</div>
+
+<div class="card">
+  <h2>时序与重构 / 告警时间线</h2>
+  <img src="data\figs\ts.png" alt="ts">
+</div>
+
+<div class="card">
+  <h2>位面特征轨迹</h2>
+  <img src="data\figs\feat.png" alt="feat">
+</div>
+
+<div class="card">
+  <h2>游程分布与过载直方图</h2>
+  <img src="data\figs\hist.png" alt="hist">
+</div>
+
+<div class="card">
+  <h2>结论卡（自动草案）</h2>
+  <ul>
+    <li>在当前配置下，F1=0.2，平均检测延迟约 4.0 步；可通过增大 γ 或减少 θₖ 提高召回。</li>
+    <li>码率约 1.0 bit/样本；若带宽受限可考虑 oversample<1（下采样+反混叠）或调整 Δ₀ 以减小重构误差。</li>
+  </ul>
+</div>
+
+</body></html>

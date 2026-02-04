@@ -1,0 +1,25 @@
+name: "dmguard-demo"
+data:
+  source: "synthetic"
+  length: 2000
+  pattern:
+    trend: {type: "linear", slope: 0.0008}
+    season: {type: "sin", period: 128, amp: 1.0}
+    noise_sigma: 0.1
+anomalies:
+  # 列出将被注入的异常（起点、持续、类型、强度）
+  - {type: "step", t0: 1200, length: 80, amp: 2.0}
+  - {type: "spike", t0: 700, length: 1, amp: 4.0}
+  - {type: "drift", t0: 1600, length: 150, slope: 0.01}
+dm:
+  delta0: 0.3
+  gamma: 1.2
+  theta_k: 1.0      # 过载阈值系数：|e_t| > theta_k * delta_t
+  oversample: 1     # 过采样倍数（MVP 先设 1）
+detect:
+  window: 64
+  ewma_alpha: 0.2
+  z_k: 3.0          # 阈值标准差倍数
+  cooldown: 30      # 告警合并冷却长度
+report:
+  out_html: "data/reports/dmguard_demo.html"

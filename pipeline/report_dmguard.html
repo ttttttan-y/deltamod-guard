@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>{{title}}</title>
+<style>
+body{font-family:system-ui,Arial;margin:24px;line-height:1.6}
+.card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:12px 0}
+h1,h2{margin:0.4em 0} table{border-collapse:collapse;width:100%} th,td{border:1px solid #eee;padding:8px}
+.kpi{display:flex;gap:16px;flex-wrap:wrap} .kpi div{padding:8px 12px;background:#f6f8fa;border-radius:10px}
+img{max-width:100%}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;background:#eef}
+</style></head><body>
+<h1>{{title}}</h1>
+<p>场景：<b>{{scenario_name}}</b>｜数据：{{data_desc}}｜DM配置：<span class="badge">Δ₀={{delta0}}</span> <span class="badge">γ={{gamma}}</span> <span class="badge">θₖ={{theta_k}}</span> <span class="badge">OS={{oversample}}×</span></p>
+
+<div class="kpi">
+  <div>F1: <b>{{f1}}</b></div>
+  <div>Precision: <b>{{prec}}</b></div>
+  <div>Recall: <b>{{rec}}</b></div>
+  <div>Avg Delay (steps): <b>{{avg_delay}}</b></div>
+  <div>Bitrate (bit/sample): <b>{{bitrate}}</b></div>
+</div>
+
+<div class="card">
+  <h2>时序与重构 / 告警时间线</h2>
+  <img src="{{ts_path}}" alt="ts">
+</div>
+
+<div class="card">
+  <h2>位面特征轨迹</h2>
+  <img src="{{feat_path}}" alt="feat">
+</div>
+
+<div class="card">
+  <h2>游程分布与过载直方图</h2>
+  <img src="{{hist_path}}" alt="hist">
+</div>
+
+<div class="card">
+  <h2>结论卡（自动草案）</h2>
+  <ul>
+    <li>{{conclusion_1}}</li>
+    <li>{{conclusion_2}}</li>
+  </ul>
+</div>
+
+</body></html>
